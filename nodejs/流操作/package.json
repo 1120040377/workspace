@@ -1,0 +1,7 @@
+{
+  "name": "stream",
+  "version": "",
+  "devDependencies": {
+    "progress": "^2.0.0"
+  }
+}
