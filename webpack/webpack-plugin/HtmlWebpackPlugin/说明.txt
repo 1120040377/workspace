@@ -1,0 +1,38 @@
+==============================
+html-webpack-plugin
+==============================
+    该插件简化了HTML文件的创建，可以让插件生成一个HTML文件
+自动添加依赖。
+
+==============================
+安装：
+    npm install --save-dev html-webpack-plugin
+
+==============================
+基本用法：
+    该插件将为您生成一个HTML5文件，其中包括使用script标签
+的body中的所有webpack包。只需要添加插件到webpack的配置中
+
+    var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+    var webpackConfig = {
+    entry: 'index.js',
+    output: {
+        path: 'dist',
+        filename: 'index_bundle.js'
+    },
+    plugins: [new HtmlWebpackPlugin()]
+    };
+
+这将会产生一个index.html
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>webpack App</title>
+    </head>
+    <body>
+        <script src="index_bundle.js"></script>
+    </body>
+    </html>
