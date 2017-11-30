@@ -1,0 +1,64 @@
+==============================
+extract-text-webpack-plugin
+==============================
+安装：
+    # for webpack 3
+    npm install --save-dev extract-text-webpack-plugin
+    # for webpack 2
+    npm install --save-dev extract-text-webpack-plugin@2.1.2
+    # for webpack 1
+    npm install --save-dev extract-text-webpack-plugin@1.0.1
+
+==============================
+使用：
+    const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+    module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: "css-loader"
+                })
+            }
+        ]
+    },
+        plugins: [
+            new ExtractTextPlugin("styles.css"),
+        ]
+    }
+
+说明：
+    上面的代码将*.css输入块中的所有必须模块移动到一个单独的
+CSS文件中，所以你的JS不再内敛到JS包中。而是在一个单独的
+style.css文件。
+    如果你的样式表总量很大，那么CSS样式将会更快，因为CSS
+包宇JS包并行加载。
+
+优点：
+    1、更少的样式标签（旧的IE有限制）
+但是有额外的HTTP请求
+    2、CSS SourceMap（devtool: "source-map" 和 extract-text-webpack-plugin?sourceMap）
+但是由更长的编译时间
+    3、并行请求
+但是没有运行时公共路径修改
+    4、CSS单独缓存
+但是没有模块热更新
+    5、更快的运行时间（更少的代码和DOM操作）
+
+===============================
+选项
+    id: {string} 插件实例的唯一标识符（仅限高级语法，默认情况下自动生成）
+
+    filename: {String | Function} 结果文件的名称。可能含有[name], [id], [contenthas]
+
+    allChunks: {Boolean} 从所有额外的块中提取（默认情况下，只从初始块中提取）
+当使用CommonsChunkPlugin并且它们从ExtractTextPlugin.extract提取了块到公共的块，
+该参数必须设置为true
+
+    disable: {Boolean} 禁用插件
+
+    ignoreOrder: {Boolean} 禁用ignore（使用CSSMoudles的时候），默认为false
+    

@@ -1,0 +1,113 @@
+==============================
+uglifyjs-webpack-plugin
+==============================
+This plugin uses UglifyJS v3 (uglify-es) to minify your JavaScript
+这个插件使用UglifyJS v3 去压缩你的JS文件
+
+注意：
+    webpack =< v3.0.0 的使用 v0.4.6 别名webpack.optimize.UglifyJsPlugin
+    v1.0.0 是为webpack v4.0.0定制的规则
+
+==============================
+安装：
+    npm i -D uglifyjs-webpack-plugin
+
+==============================
+用法：
+|- webpack.config.js
+    const UgilfyJsPlugin = reuqire('uglifyjs-webpack-plugin');
+
+    module.exports = {
+        plugin: [
+            new UglifyJsPlugin()
+        ]
+    }
+
+=============================
+选项(属性名称)
+    
+    test
+        类型   - {RegExp|Array<RegExp>}
+        默认值 - /.js($|\?)/i
+        描述   - 测试匹配的文件
+
+        [
+            new UglifyJSPlugin({
+                test: /\.js($|\?)/i
+            })
+        ]
+
+    include
+        类型   - {RegExp|Array<RegExp>}
+        默认值 - undefined
+        描述   - 包含的文件
+
+        [
+            new UglifyJSPlugin({
+                include: /\/includes/
+            })
+        ]
+
+    exclude
+        类型   - {RegExp|Array<RegExp>}
+        默认值 - undefined
+        描述   - 排除的文件。
+
+        [
+            new UglifyJSPlugin({
+                exclude: /\/excludes/
+            })
+        ]
+
+    cache
+        类型   - {Boolean|String}
+        默认值 - false
+        描述   - 启用文件缓存
+
+        [
+            new UglifyJSPlugin({
+                //cache: true // 默认缓存地址node_modules/.cache/uglifyjs-webpack-plugin.
+                cache: 'path/to/cache' // 手动配置缓存地址
+            })
+        ]
+
+
+    parallel
+        类型   - {Boolean|Object}
+        默认值 - false
+        描述   - 使用多进程并行运行和文件缓存来提高构建速度
+
+        [
+            new UglifyJSPlugin({
+                parallel: true
+                // parallel: 4 // 手动指定进程数
+            })
+        ]
+        默认进程数 os.cpus().length - 1.
+
+    sourceMap
+        类型   - {Boolean}
+        默认值 - false
+        描述   - 使用 source map 将错误信息的位置映射到模块（这会减慢编译的速度） ⚠️ cheap-source-map 选项不适用于此插件
+
+        cheap-source-map options don't work with this plugin
+
+    uglifyOptions
+        类型   - {Object}
+        默认值 - {...defaults}
+        描述   - uglify 选项 - 详情参考uglify插件
+
+    extractComments
+        类型   - {Boolean|RegExp|Function<(node, comment) -> {Boolean|Object}>}
+        默认值 - false
+        描述   - 是否将注释提取到单独的文件，
+  
+    warningsFilter
+        类型   - {Function(source) -> {Boolean}}
+        默认值 - () => true
+        描述   - 允许过滤 uglify 警告
+        [
+            new UglifyJsPlugin({
+                warningsFilter: (src) => true
+            })
+        ]
