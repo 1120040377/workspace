@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./1.js"></script>
+    <script>
+        window.onload = () => {
+            // 工程师 A
+            (() => {
+                var text = $('text');
+                $('user_submit').onclick = () => {
+                    if (text.value === '') return;
+                    Observer.fire('addMsg', {
+                        text: text.value,
+                        num: 1
+                    })
+
+                    text.value = '';
+                }
+            })();
+
+            // 工程师 B
+            (() => {
+                // 更改用户消息数目
+                function changeMsgNum (e) {
+                    var num = e.args.num;
+                    $('msg_num').innerHTML = parseInt($('msg_num').innerHTML) + num;
+                    
+                }
+
+                //注册添加评论信息
+                Observer
+                    .regist('addMsg', changeMsgNum)
+                    .regist('removeMsg', changeMsgNum)
+
+            })();
+
+            // 工程师C
+            (() => {
+                function addMsgItem(e) {
+                    var 
+                        txt = e.args.text,
+                        ul = $('msg_box'),
+                        li = document.createElement('li'),
+                        span = document.createElement('span'); // 删除按钮
+                    li.innerHTML = txt + ' -- ';
+                    span.innerHTML = '删除'
+
+                    span.onclick = () => {
+                        ul.removeChild(li);
+                        Observer.fire('removeMsg', {
+                            num: -1
+                        });
+                    }
+
+                    li.appendChild(span)
+                    ul.appendChild(li)
+                }
+                Observer.regist('addMsg', addMsgItem);
+            })()
+        }
+
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div>
+        <h5>王浩  等级 <span>9</span> 消息 <span id="msg_num">0</span></h3>
+        <h3>最新发布消息</h3>
+        <ul id="msg_box"></ul>
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+        <button id="user_submit">提交</button>
+    </div>
+</body>
+</html>
