@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // scroll
+        //     当用户滚动带滚动太的元素中的内容时，在该元素上触发。
+        //     body元素中包含所加载页面的滚动条
+        window.onload = function () {
+            
+            var i = 100;
+            while(i > 0) {
+                i--;
+                var dom = document.createElement('p');
+                dom.innerHTML = i;
+                document.body.appendChild(dom)
+            }
+            document.body.onscroll = function () {
+                alert('窗口滚动了')
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

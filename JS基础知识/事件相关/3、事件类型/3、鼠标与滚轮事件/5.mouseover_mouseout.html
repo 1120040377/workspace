@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // mouseover
+        //     在鼠标指针位于一个元素外部，然后用户将其首次移入另一个元素边界之内
+        //     时触发。不能通过键盘触发这个事件
+        
+        // mouseout
+        //     在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发。
+        //     又移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的
+        //     子元素。不能通过键盘触发这个事件。
+        window.onload = function () {
+            var oParent = document.querySelector('.parent')
+            oParent.addEventListener('mouseover', () => {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseover 触发'
+                document.body.appendChild(p)
+            })
+
+            oParent.addEventListener('mouseout', () => {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseout 触发'
+                document.body.appendChild(p)
+            })
+        }
+    </script>
+    <style>
+        .parent{
+            width: 200px;
+            height: 200px;
+            background: #f66;
+            overflow: hidden;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background: #f0f;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

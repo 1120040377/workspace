@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // mouseup
+        //     用户按下任意鼠标按钮弹起时触发。不能通过键盘触发这个事件
+        window.onload = function () {
+            var oBtn = document.querySelector('#btn')
+            oBtn.onmouseup = function () {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseup 触发'
+                document.body.appendChild(p)
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">鼠标点击任意按键触发</button>
+</body>
+</html>

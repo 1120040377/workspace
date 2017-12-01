@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // mouseenter
+        //     在鼠标光标从元素外部首次移动到元素范围之内时触发。
+        //     这个事件不冒泡，而且光标移到后代元素上页不会触发
+        
+        // mouseleave
+        //     在位于元素上方的鼠标光标移动到元素范围之外时触发。
+        //     这个事件不冒泡，而且在光标移动到后代元素上不会触发。
+        window.onload = function () {
+            var oParent = document.querySelector('.parent')
+            oParent.addEventListener('mouseenter', () => {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseenter 触发'
+                document.body.appendChild(p)
+            })
+
+            oParent.addEventListener('mouseleave', () => {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseleave 触发'
+                document.body.appendChild(p)
+            })
+        }
+    </script>
+    <style>
+        .parent{
+            width: 200px;
+            height: 200px;
+            background: #f66;
+            overflow: hidden;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background: #f0f;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>
