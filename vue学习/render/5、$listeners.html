@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>    
+    <script>
+        
+        window.onload = () => {
+            Vue.component('blog-post', {
+                methods: {
+                    met () {
+                        alert(1)
+                    }
+                    
+                },
+                render (createElement) {
+                    var header = this.$slots.header
+                    var body   = this.$slots.default
+                    var footer = this.$slots.footer
+                    var content = this.$slots.content
+                    return createElement('div', [
+                    createElement('header', {
+                        on: {
+                            click: this.met
+                        }
+                    } , 'header'),
+                    createElement('main', body),
+                    createElement('footer', footer),
+                    createElement('h1', content)
+                    ])
+                },
+                
+                
+            
+        })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    isMessageShow: false
+                },
+                methods: {
+                    messageShow () {
+                        this.isMessageShow = !this.isMessageShow
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="messageShow">按钮</button>
+        <div v-if="isMessageShow">消息隐藏的</div>
+        <blog-post>
+            <h1 slot="header">
+                About Me
+            </h1>
+            <p slot="content">我是content slot</p>
+            <p>Here's some page content, which will be included in vm.$slots.default, because it's not inside a named slot.</p>
+        
+            <p slot="footer">
+                Copyright 2016 Evan You
+            </p>
+        
+            <p>If I have some content down here, it will also be included in vm.$slots.default.</p>.
+        </blog-post>
+    </div>
+</body>
+</html>

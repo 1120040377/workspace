@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        vm.$data : Object
+            Vue实例观察的数据对象。Vue实例代理了其对data对象属性的访问
+
+        vm.$props : Object
+            当前组件接收到的props对象。Vue实例代理了对其props对象属性的访问。
+
+        vm.$el : HTMLElement
+            Vue实例使用根DOM元素
+
+        vm.$options : Object
+            用于当前Vue实例的初始化选项。需要在选项中包含自定义属性时会有用处
+            new Vue({
+                customOption: 'foo',
+                created: function () {
+                    console.log(this.$options.customOption) // => 'foo'
+                }
+            })
+            注意：这里是显示自定义属性。
+
+        vm.$parent : Vue instance
+            父实例，如果当前实例有的话
+
+        vm.$root : Vue instance
+            当前组件树的根Vue实例。如果当前实例没有父实例，此实例将会是其自己
+
+        vm.$children : Array<Vue instance>
+            当前实例的直接子组件。需要注意$children并不保证顺序，也不是响应式的。
+            如果你发自己正在尝试使用$children来进行数据绑定，
+            考虑使用一个数组配合v-for来生成子组件，并使用Array作为真正的来源。
+
+        vm.$slots : { [name: string]: ?Array<VNode> }
+            用来访问被 插槽分发 的内容。每个 具名插槽 有其相应的属性(例如： slot="foo"
+            中的内容将会在vm.$slots.foo 中被找到)。default 属性的包括了所有没有被包含
+            在具名插槽中的节点。
+
+            在使用渲染函数书写一个组件时，访问vm.$slots最有帮助
+            案例演示请看 4、$slots.html
+
+        vm.$scopedSlots : { [name: string]: ?Array<VNode> }
+            用来访问 作用域插槽。对于包括默认slot 在内的每一个插槽，该对象都
+            包含一个返回相应VNode的函数。
+
+            vm.$scopedSlots 在使用 渲染函数 开发一个组件时特别有用。
+
+        vm.$refs : Object
+            一个对象，持有已注册过ref的所有子组件
+
+        vm.$isServer : Boolean
+            当前Vue实例是否运行于服务器 参考服务端渲染
+
+        vm.$attrs : { [key: string]: string}
+            包含了父作用域中不被认为（且不预期为）props的特性绑定（class 和 style除外）。
+            当一个组件没有声明任何props时，这里会包含所有的副作用域的绑定（class 和style除外），
+            并且可以通过v-bind="$attrs"传入内部组件 -- 在创建更高层次的组件时非常有用。
+     -->
+</head>
+<body>
+    
+</body>
+</html>
