@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/demo/demo",
+    "pages/todos/todos",    
+    "pages/add-todo/add-todo"
+  ],
+  "window": {
+    "titleBarColor": "#FFF",
+    "defaultTitle": "善诊健康",
+    "pullRefresh": false,
+    "allowsBounceVertical": "NO"
+  },
+  "tabBar": {
+    "textColor": "#dddddd",
+    "selectedColor": "#49a9ee",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/demo/demo",
+        "name": "测试",
+        "icon": "static/images/0.jpg",
+        "activeIcon": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1654830620,26319409&fm=27&gp=0.jpg"
+      },
+      {
+        "pagePath": "pages/todos/todos",
+        "name": "首页",
+        "icon": "static/images/0.jpg",
+        "activeIcon": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1654830620,26319409&fm=27&gp=0.jpg"
+      },
+      {
+        "pagePath": "pages/add-todo/add-todo",
+        "name": "日志",
+        "icon": "static/images/0.jpg",
+        "activeIcon": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1654830620,26319409&fm=27&gp=0.jpg"
+      }
+    ]
+  }
+}
