@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+    <script>
+        window.onload = () => {
+            Vue.component('demo-component', {
+                render (createElement) {
+                    return createElement(
+                        'h' + this.level,
+                        this.$slots.default
+                    )
+                },
+                props: {
+                    level: {
+                        type: Number,
+                        required: true
+                    }
+                }
+            })
+
+            new Vue({
+                el: '#app'
+            })
+        }
+    </script>
+</head>
+<body>
+    <!-- 
+        这样的方式要清晰很多，或者说是代码精简很多，但是需要非常熟悉Vue
+        的实例属性。
+        在这个例子中，你需要知道当你不使用slot属性向组件中传递内容时，
+        比如demo-component中的Hello world，这些子元素被存储在组件实例中
+        $slots.default中。如果你还不了解，在深入render函数之前推荐阅读
+        实例属性API
+     -->
+    <div id="app">
+        <demo-component :level="1">哈喽</demo-component>
+    </div>
+</body>
+</html>

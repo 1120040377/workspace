@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+    <script>
+        window.onload = () => {
+            Vue.component('anchored-heading', {
+                template: '#anchored-heading-template',
+                props: {
+                    level: {
+                        type: Number,
+                        required: true
+                    }
+                }
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    msg: '我是message'
+                }
+            })
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <anchored-heading :level="5">哈喽</anchored-heading>    
+    </div>
+
+    <!-- 
+        用template的方式实现这个组件并不是最好的选择：
+            首先代码冗长，儿了在不同级别的标题中插入锚点元素
+            我们需要重复的使用<slot></slot>
+
+            虽然模版在大多数组件中都非常好用，但是在这里就不是很
+            简洁的了。那么，我们来尝试使用render函数重写这个例子
+
+        请看2.html
+     -->
+    <!-- 组件 -->
+    <script type="text/x-template" id="anchored-heading-template">
+        <h1 v-if="level === 1">
+          <slot></slot>
+        </h1>
+        <h2 v-else-if="level === 2">
+          <slot></slot>
+        </h2>
+        <h3 v-else-if="level === 3">
+          <slot></slot>
+        </h3>
+        <h4 v-else-if="level === 4">
+          <slot></slot>
+        </h4>
+        <h5 v-else-if="level === 5">
+          <slot></slot>
+        </h5>
+        <h6 v-else-if="level === 6">
+          <slot></slot>
+        </h6>
+    </script>
+</body>
+</html>

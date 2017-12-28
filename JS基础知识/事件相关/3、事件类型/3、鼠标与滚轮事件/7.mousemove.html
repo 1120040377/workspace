@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.body.onmousemove = function () {
+                var p = document.createElement('p')
+                p.innerHTML = 'mouseover 触发'
+                document.body.appendChild(p)
+            }
+        }
+        
+    </script>
+    <style>
+        html,body{height: 100%;}
+    </style>
+</head>
+<body>
+    移动鼠标
+</body>
+</html>

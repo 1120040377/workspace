@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // click
+        //     在用户单击主鼠标按钮（一般为左边的按钮）或者按下回车键时触发
+        //     这一点对确保易访问性很重要，意味着onclick事件处理程序既可以
+        //     通过键盘，又可以通过鼠标执行
+        window.onload = function () {
+            var oBtn = document.querySelector('#btn')
+            oBtn.onclick = function () {
+                var p = document.createElement('p')
+                p.innerHTML = 'click 触发'
+                document.body.appendChild(p)
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">鼠标点击或按会车触发</button>
+</body>
+</html>

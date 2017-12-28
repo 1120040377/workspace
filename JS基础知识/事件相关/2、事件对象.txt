@@ -1,0 +1,21 @@
+=======================
+事件对象
+    在触发DOM上的某个事件时，会产生一个事件对象event，这个对象中包含着
+所有与事件有关的信息。
+
+======================
+常用属性
+    bubbles: Boolean 表明事件是否可以冒泡 
+    cancelable: Boolean 表明是否可以取消事件的默认行为
+    currentTarget: Element 触发事件处理程序的那个元素
+    preventDefault(): Function 取消事件的默认行为。如果cancelable为true则可以使用该方法
+    stopPropagation(): Function 阻止事件进一步捕获或冒泡。如果bubbles为true则可以使用该方法
+
+注意，在事件处理程序内部，对象this始终等于currentTarget的值，而target则只
+包含事件的实际目标。
+
+======================
+IE中的事件对象
+    cancelBubble: Boolean 默认值为false， 但将其设置为true皆可以取消事件冒泡
+与stopPropagation()方法的作用相同。
+    srcElement: Element 事件目标 => target

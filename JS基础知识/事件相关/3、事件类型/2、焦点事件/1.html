@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // focus
+        //     focus_blur 不会冒泡
+        //     focusin_focusout 会冒泡
+        var parent
+        window.onload = function () {
+            parent = document.querySelector('#parent')
+            var input = document.querySelector('#input')
+            
+            parent.addEventListener('focus', function () {
+                createMessage('parent focus')
+            })
+            parent.addEventListener('blur', function () {
+                createMessage('parent blur')
+            })
+            parent.addEventListener('focusin', function () {
+                createMessage('parent focusin')
+            })
+            parent.addEventListener('focusout', function () {
+                createMessage('parent focusout')
+            })
+            input.addEventListener('focus', function () {
+                createMessage('input focus')
+            })
+            input.addEventListener('blur', function () {
+                createMessage('input blur')
+            })
+        }
+
+        function createMessage (str) {
+            var message = document.createElement('p')
+            message.innerHTML = str
+            parent.appendChild(message)
+        }
+    </script>
+</head>
+<body>
+    <div id="parent">
+        <p>父级同时添加了focus 和 focusin的事件处理程序，但是只有focusin会被冒泡触发</p>
+        <input type="text" value="focus_blur" id="input"><br>
+    </div>
+</body>
+</html>
