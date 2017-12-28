@@ -1,7 +1,0 @@
-<view>
-  <view>{{name}}</view>
-  <view>{{age}}</view>
-  <view onTap="handler">点我</view>
-  <view onTap="changeText">click me change text</view>
-  <view a:for="{{arr}}">{{item}}</view>
-</view>
